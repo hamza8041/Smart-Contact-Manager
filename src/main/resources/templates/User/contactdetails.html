@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en"xmlns:th="http://www.thymeleaf.org" th:replace="User/base::layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title>Home Page</title>
+</head>
+<body>
+
+
+	<section>
+	
+	
+	<div class="card mr-3">
+	
+	<div class="card-body" th:if="${contact}">
+	
+	<div class="container text-center">
+	
+	
+	<img src="" style="height: 200px; width:200px;" class="myprofile" th:src="@{'/img/'+${contact.imageurl}}">
+      
+	<h3 th:text="${contact.cname}"></h3>
+	
+	<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col"> Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Work</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td><span th:text="${contact.email}"></span></td>
+      <td> <span th:text="${contact.phone}"></span></td>
+      <td> <span th:text="${contact.work}"></span></td>
+    </tr>
+  </tbody>
+</table>
+	
+	
+	<div class="container mt-3">
+	
+	
+	<button th:onclick="|deletecontact(${contact.cid})|" class="btn btn-danger btn-sm"> Delete</button>
+     <form method="post" th:action="@{'/user/update-contact/'+${contact.cid}}">
+       <button type="submit" class="btn btn-primary btn-sm">Update</button>
+       </form>
+       
+       
+       
+	
+	</div>
+	
+	</div>
+	</div>
+	</div>
+	
+	</section>
+
+
+
+
+</body>
+</html>
